@@ -292,7 +292,7 @@ class Solr(object):
         if result.username is not None and result.password is not None:
             self.auth = 'Basic ' + base64.encodestring(result.username + ':' +
                                                                     result.password)
-        self.base_url = urlunsplit((self.scheme, result.netloc, '', '', ''))
+        self.base_url = urlunsplit((self.scheme, self.host, '', '', ''))
         self.path = result.path.rstrip('/')
         self.timeout = timeout
         self.log = self._get_log()
