@@ -292,6 +292,9 @@ class Solr(object):
         if result.username is not None and result.password is not None:
             self.auth = 'Basic ' + base64.encodestring(result.username + ':' +
                                                                     result.password)
+        else:
+            self.auth = None
+
         self.base_url = urlunsplit((self.scheme, self.host, '', '', ''))
         self.path = result.path.rstrip('/')
         self.timeout = timeout
@@ -303,7 +306,7 @@ class Solr(object):
     def _send_request(self, method, path, body=None, headers=None):
         if headers is None:
             headers = {}
-        if self.auth and self.auth is not None:
+        if self.auth is not None:
             headers['Authorization'] = self.auth
         if TIMEOUTS_AVAILABLE:
             http = Http(timeout=self.timeout)
