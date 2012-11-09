@@ -295,7 +295,7 @@ class Solr(object):
         else:
             self.auth = None
 
-        self.base_url = urlunsplit((self.scheme, self.host, '', '', ''))
+        self.base_url = urlunsplit((self.scheme, '%s:%s' % (self.host, self.port), '', '', ''))
         self.path = result.path.rstrip('/')
         self.timeout = timeout
         self.log = self._get_log()
