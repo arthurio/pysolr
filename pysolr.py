@@ -303,7 +303,7 @@ class Solr(object):
     def _send_request(self, method, path, body=None, headers=None):
         if headers is None:
             headers = {}
-        if self.auth is not None:
+        if self.auth and self.auth is not None:
             headers['Authorization'] = self.auth
         if TIMEOUTS_AVAILABLE:
             http = Http(timeout=self.timeout)
