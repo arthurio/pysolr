@@ -1,3 +1,4 @@
 *.pyc
 dist/
+pysolr.egg-info/
 MANIFEST
